@@ -31,4 +31,16 @@ public class Bulldozer {
     public Direction getDirection() {
         return direction;
     }
+
+    public int getUsedFuelAmount() {
+        return fuelUsed;
+    }
+
+    public int getDamagedPaintAmount() {
+        return paintDamage;
+    }
+
+    public int getCommandsCount() {
+        return commandsReceived;
+    }
 }

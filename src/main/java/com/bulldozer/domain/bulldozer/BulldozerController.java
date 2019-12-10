@@ -1,6 +1,8 @@
 package com.bulldozer.domain.bulldozer;
 
-import com.bulldozer.domain.site.*;
+import com.bulldozer.domain.site.ClearableBlock;
+import com.bulldozer.domain.site.SiteCleaner;
+import com.bulldozer.domain.site.TraversableSite;
 
 public class BulldozerController implements IBulldozerController {
     private SiteCleaner bulldozerState;
@@ -23,7 +25,10 @@ public class BulldozerController implements IBulldozerController {
     }
 
     public void move(int distance) {
-        bulldozerState = initBulldozerState(distance);
+        if (distance < 0) {
+            throw new IllegalArgumentException("Distance must not be negative,but got " + distance);
+        }
+        bulldozerState = CleaningStateFactory.initBulldozerState(distance, bulldozer, this);
         bulldozer.increaseCommandsCount();
         while (distance > 0) {
             ClearableBlock currentBlock = site.move(bulldozer.getDirection());
@@ -34,13 +39,5 @@ public class BulldozerController implements IBulldozerController {
 
     void setState(SiteCleaner bulldozerState) {
         this.bulldozerState = bulldozerState;
-    }
-
-    private SiteCleaner initBulldozerState(int distance) {
-        if (distance == 1) {
-            return new StoppingBulldozerState();
-        } else {
-            return new MovingBulldozerState(distance);
-        }
     }
 }

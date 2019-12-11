@@ -2,7 +2,7 @@ package com.bulldozer.domain.bulldozer;
 
 import com.bulldozer.common.Direction;
 
-public class Bulldozer {
+class Bulldozer {
     private int fuelUsed = 0;
     private int paintDamage = 0;
     private int commandsReceived = 0;

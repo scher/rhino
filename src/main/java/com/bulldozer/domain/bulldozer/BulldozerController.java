@@ -4,7 +4,7 @@ import com.bulldozer.domain.site.ClearableBlock;
 import com.bulldozer.domain.site.SiteCleaner;
 import com.bulldozer.domain.site.TraversableSite;
 
-public class BulldozerController implements IBulldozerController {
+class BulldozerController implements IBulldozerController {
     private SiteCleaner bulldozerState;
     private Bulldozer bulldozer;
     private TraversableSite site;

@@ -26,5 +26,4 @@ class StoppedBulldozerState extends AbstractBulldozerState {
         commandInvoked = true;
         bulldozerController.setState(null);
     }
-
 }

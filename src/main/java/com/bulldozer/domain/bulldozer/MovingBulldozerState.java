@@ -5,7 +5,7 @@ import com.bulldozer.domain.site.ClearableBlock;
 class MovingBulldozerState extends AbstractBulldozerState {
     private int distance;
 
-    MovingBulldozerState(Bulldozer bulldozer, BulldozerController bulldozerController, int distance) {
+    MovingBulldozerState(int distance, Bulldozer bulldozer, BulldozerController bulldozerController) {
         super(bulldozer, bulldozerController);
         this.distance = distance;
     }
@@ -22,8 +22,12 @@ class MovingBulldozerState extends AbstractBulldozerState {
     }
 
     void handleStateChange() {
+        --distance;
+        if (distance < 1) {
+            throw new IllegalStateException("Unable to move bulldozer any more");
+        }
         if (distance == 1) {
-            bulldozerController.setState(new StoppingBulldozerState());
+            bulldozerController.setState(new StoppedBulldozerState(bulldozer, bulldozerController));
         }
     }
 }

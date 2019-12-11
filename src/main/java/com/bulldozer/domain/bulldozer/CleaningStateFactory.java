@@ -10,7 +10,7 @@ class CleaningStateFactory {
         if (distance == 1) {
             return new StoppedBulldozerState(bulldozer, controller);
         } else {
-            return new MovingBulldozerState(bulldozer, controller, distance);
+            return new MovingBulldozerState(distance, bulldozer, controller);
         }
     }
 }

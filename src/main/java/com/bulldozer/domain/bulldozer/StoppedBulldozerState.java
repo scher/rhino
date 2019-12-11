@@ -2,8 +2,10 @@ package com.bulldozer.domain.bulldozer;
 
 import com.bulldozer.domain.site.ClearableBlock;
 
-class StoppingBulldozerState extends AbstractBulldozerState {
-    public StoppingBulldozerState(Bulldozer bulldozer, BulldozerController bulldozerController) {
+class StoppedBulldozerState extends AbstractBulldozerState {
+    private boolean commandInvoked = false;
+
+    public StoppedBulldozerState(Bulldozer bulldozer, BulldozerController bulldozerController) {
         super(bulldozer, bulldozerController);
     }
 
@@ -18,6 +20,10 @@ class StoppingBulldozerState extends AbstractBulldozerState {
     }
 
     void handleStateChange() {
+        if (commandInvoked) {
+            throw new IllegalStateException("Stopped bulldozer can be called only once");
+        }
+        commandInvoked = true;
         bulldozerController.setState(null);
     }
 

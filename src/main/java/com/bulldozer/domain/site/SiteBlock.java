@@ -1,37 +1,24 @@
 package com.bulldozer.domain.site;
 
-public enum SiteBlock implements ClearableBlock {
-    PLAIN {
-        @Override
-        public void clear(SiteCleaner siteCleaner) {
-            siteCleaner.clearPlain(this);
-        }
-    }, ROCK {
-        @Override
-        public void clear(SiteCleaner siteCleaner) {
-            siteCleaner.clearRock(this);
-        }
-    }, TREE {
-        @Override
-        public void clear(SiteCleaner siteCleaner) {
-            siteCleaner.clearTree(this);
-        }
-    }, PROTECTED_TREE {
-        @Override
-        public void clear(SiteCleaner siteCleaner) {
-            siteCleaner.clearProtectedTree(this);
-        }
+import java.util.function.BiConsumer;
 
-        @Override
-        public boolean isCleared() {
-            return true;
-        }
-    };
+class SiteBlock implements ClearableBlock {
+    static final BiConsumer<SiteCleaner, SiteBlock> PLAIN = SiteCleaner::clearPlain;
+    static final BiConsumer<SiteCleaner, SiteBlock> ROCK = SiteCleaner::clearRock;
+    static final BiConsumer<SiteCleaner, SiteBlock> TREE = SiteCleaner::clearTree;
+    static final BiConsumer<SiteCleaner, SiteBlock> PROTECTED_TREE = SiteCleaner::clearProtectedTree;
 
     private boolean cleared;
     private boolean protectedTreeDestroyed;
+    private BiConsumer<SiteCleaner, SiteBlock> clearingConsumer;
 
-    public abstract void clear(SiteCleaner siteCleaner);
+    SiteBlock(BiConsumer<SiteCleaner, SiteBlock> clearingConsumer) {
+        this.clearingConsumer = clearingConsumer;
+    }
+
+    public void clear(SiteCleaner siteCleaner) {
+        clearingConsumer.accept(siteCleaner, this);
+    }
 
     public boolean isCleared() {
         return cleared;
@@ -43,5 +30,9 @@ public enum SiteBlock implements ClearableBlock {
 
     public void setProtectedTreeDestroyed() {
         this.protectedTreeDestroyed = true;
+    }
+
+    boolean isProtectedTreeDestroyed() {
+        return protectedTreeDestroyed;
     }
 }

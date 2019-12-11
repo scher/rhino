@@ -11,7 +11,6 @@ class BulldozerControllerTest {
 
     Bulldozer bulldozerMock;
     TraversableSite siteMock;
-    BulldozerController classToTest;
 
     @BeforeEach
     void setUp() {

@@ -1,17 +1,19 @@
 package com.bulldozer.domain.site;
 
 import com.bulldozer.common.Direction;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
-public class Site {
+class Site implements TraversableSite {
     private SiteBlock[][] siteBlocks;
-    private Location current;
-    public SiteBlock move(Direction direction) {
-        throw new NotImplementedException();
+    private int currentX = -1;
+    private int currentY = 0;
+
+    public Site(SiteBlock[][] siteBlocks) {
+        this.siteBlocks = siteBlocks;
     }
 
-    private class Location {
-        int x;
-        int y;
+    public ClearableBlock move(Direction direction) {
+        currentX += direction.getXincrement();
+        currentY += direction.getYincrement();
+        return siteBlocks[currentY][currentX];
     }
 }

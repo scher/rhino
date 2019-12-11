@@ -1,7 +1,7 @@
 package com.bulldozer.common;
 
 public enum Direction {
-    EAST {
+    EAST(1, 0) {
         public Direction right() {
             return SOUTH;
         }
@@ -9,7 +9,7 @@ public enum Direction {
         public Direction left() {
             return NORTH;
         }
-    }, NORTH {
+    }, NORTH(0, -1) {
         public Direction right() {
             return EAST;
         }
@@ -17,7 +17,7 @@ public enum Direction {
         public Direction left() {
             return WEST;
         }
-    }, SOUTH {
+    }, SOUTH(0, 1) {
         public Direction right() {
             return WEST;
         }
@@ -25,7 +25,7 @@ public enum Direction {
         public Direction left() {
             return EAST;
         }
-    }, WEST {
+    }, WEST(-1, 0) {
         public Direction right() {
             return NORTH;
         }
@@ -34,6 +34,22 @@ public enum Direction {
             return SOUTH;
         }
     };
+
+    int xIncrement;
+    int yIncrement;
+
+    Direction(int xIncrement, int yIncrement) {
+        this.xIncrement = xIncrement;
+        this.yIncrement = yIncrement;
+    }
+
+    public int getXincrement() {
+        return xIncrement;
+    }
+
+    public int getYincrement() {
+        return yIncrement;
+    }
 
     public abstract Direction right();
 

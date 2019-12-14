@@ -5,6 +5,15 @@ public class ReportItem {
     private int quantity;
     private int cost;
 
+    @Override
+    public String toString() {
+        return "ReportItem{" +
+                "message='" + message + '\'' +
+                ", quantity=" + quantity +
+                ", cost=" + cost +
+                '}';
+    }
+
     public ReportItem(String message, int quantity, int cost) {
         this.message = message;
         this.quantity = quantity;

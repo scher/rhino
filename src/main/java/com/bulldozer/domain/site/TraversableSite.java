@@ -4,4 +4,8 @@ import com.bulldozer.common.Direction;
 
 public interface TraversableSite {
     ClearableBlock move(Direction direction);
+
+    int getUnclearedBlocksAmount();
+
+    int getProtectedTreeDestroyedAmount();
 }

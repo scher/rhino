@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 class SiteTest {
 
@@ -49,5 +50,29 @@ class SiteTest {
         setup();
         Assertions.assertThrows(ArrayIndexOutOfBoundsException.class,
                 () -> site.move(Direction.NORTH));
+    }
+
+    /*
+    00 01
+    10 11
+     */
+    @Test
+    void getUnclearedBlocksAmount() {
+        when(blockMock00.isCleared()).thenReturn(true);
+        when(blockMock11.isCleared()).thenReturn(true);
+        when(blockMock01.isCleared()).thenReturn(true);
+        when(blockMock10.isCleared()).thenReturn(false);
+
+        Assertions.assertEquals(1, site.getUnclearedBlocksAmount());
+    }
+
+    @Test
+    void getProtectedTreeDestroyedAmount() {
+        when(blockMock00.isProtectedTreeDestroyed()).thenReturn(true);
+        when(blockMock11.isProtectedTreeDestroyed()).thenReturn(false);
+        when(blockMock01.isProtectedTreeDestroyed()).thenReturn(false);
+        when(blockMock10.isProtectedTreeDestroyed()).thenReturn(false);
+
+        Assertions.assertEquals(1, site.getProtectedTreeDestroyedAmount());
     }
 }

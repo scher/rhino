@@ -32,7 +32,7 @@ class SiteBlock implements ClearableBlock {
         this.protectedTreeDestroyed = true;
     }
 
-    boolean isProtectedTreeDestroyed() {
+    public boolean isProtectedTreeDestroyed() {
         return protectedTreeDestroyed;
     }
 }

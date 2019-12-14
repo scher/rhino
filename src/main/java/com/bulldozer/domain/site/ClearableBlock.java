@@ -6,4 +6,6 @@ public interface ClearableBlock {
     boolean isCleared();
 
     void setProtectedTreeDestroyed();
+
+    boolean isProtectedTreeDestroyed();
 }

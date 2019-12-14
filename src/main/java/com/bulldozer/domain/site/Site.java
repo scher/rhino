@@ -3,11 +3,11 @@ package com.bulldozer.domain.site;
 import com.bulldozer.common.Direction;
 
 class Site implements TraversableSite {
-    private SiteBlock[][] siteBlocks;
+    private ClearableBlock[][] siteBlocks;
     private int currentX = -1;
     private int currentY = 0;
 
-    public Site(SiteBlock[][] siteBlocks) {
+    public Site(ClearableBlock[][] siteBlocks) {
         this.siteBlocks = siteBlocks;
     }
 

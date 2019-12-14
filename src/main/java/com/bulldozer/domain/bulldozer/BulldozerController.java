@@ -37,6 +37,21 @@ class BulldozerController implements IBulldozerController {
         }
     }
 
+    @Override
+    public int getUsedFuelAmount() {
+        return bulldozer.getUsedFuelAmount();
+    }
+
+    @Override
+    public int getDamagedPaintAmount() {
+        return bulldozer.getDamagedPaintAmount();
+    }
+
+    @Override
+    public int getCommandsCount() {
+        return bulldozer.getCommandsCount();
+    }
+
     void setState(SiteCleaner bulldozerState) {
         this.bulldozerState = bulldozerState;
     }

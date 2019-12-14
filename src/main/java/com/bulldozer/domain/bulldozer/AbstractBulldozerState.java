@@ -4,7 +4,7 @@ import com.bulldozer.domain.site.ClearableBlock;
 import com.bulldozer.domain.site.SiteCleaner;
 import com.bulldozer.exceptions.ClearProtectedTreeException;
 
-public abstract class AbstractBulldozerState implements SiteCleaner {
+abstract class AbstractBulldozerState implements SiteCleaner {
     Bulldozer bulldozer;
     BulldozerController bulldozerController;
 

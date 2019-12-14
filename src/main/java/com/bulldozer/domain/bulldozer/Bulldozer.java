@@ -8,39 +8,39 @@ class Bulldozer {
     private int commandsReceived = 0;
     private Direction direction = Direction.EAST;
 
-    public void useFuel(int amount) {
+    void useFuel(int amount) {
         fuelUsed += amount;
     }
 
-    public void damagePaint() {
+    void damagePaint() {
         paintDamage++;
     }
 
-    public void increaseCommandsCount() {
+    void increaseCommandsCount() {
         commandsReceived++;
     }
 
-    public void turnRight() {
+    void turnRight() {
         direction = direction.right();
     }
 
-    public void turnLeft() {
+    void turnLeft() {
         direction = direction.left();
     }
 
-    public Direction getDirection() {
+    Direction getDirection() {
         return direction;
     }
 
-    public int getUsedFuelAmount() {
+    int getUsedFuelAmount() {
         return fuelUsed;
     }
 
-    public int getDamagedPaintAmount() {
+    int getDamagedPaintAmount() {
         return paintDamage;
     }
 
-    public int getCommandsCount() {
+    int getCommandsCount() {
         return commandsReceived;
     }
 }

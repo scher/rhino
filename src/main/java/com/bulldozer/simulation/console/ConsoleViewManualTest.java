@@ -15,11 +15,11 @@ import java.util.List;
  */
 class ConsoleViewManualTest {
     public static void main(String[] args) throws IOException, UnsupportedCommandException {
-        testRenderMap();
-        testReadNextCommand();
-
-        testRenderIssuedCommands();
-        testrenderReport();
+//        testRenderMap();
+//        testReadNextCommand();
+//
+//        testRenderIssuedCommands();
+//        testrenderReport();
     }
 
     private static void testrenderReport() {

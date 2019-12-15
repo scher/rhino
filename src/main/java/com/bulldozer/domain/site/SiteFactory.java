@@ -1,7 +1,7 @@
 package com.bulldozer.domain.site;
 
 public abstract class SiteFactory {
-    public static Site createSite(String[][] inputMap) {
+    public static TraversableSite createSite(String[][] inputMap) {
         ClearableBlock[][] siteMatrix = new ClearableBlock[inputMap.length][inputMap[0].length];
         for (int y = 0; y < inputMap.length; y++) {
             for (int x = 0; x < inputMap[0].length; x++) {

@@ -10,7 +10,7 @@ import static org.mockito.Mockito.*;
 class SiteFactoryTest {
 
     private SiteCleaner siteCleanerMock;
-    private Site site;
+    private TraversableSite site;
 
     @BeforeEach
     void setUp() {

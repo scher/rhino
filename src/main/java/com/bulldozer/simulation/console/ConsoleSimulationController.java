@@ -54,6 +54,8 @@ public class ConsoleSimulationController {
                 break;
             } catch (UnsupportedCommandException e) {
             } catch (IOException e) {
+            } catch (IndexOutOfBoundsException e) {
+                break;
             }
         }
     }

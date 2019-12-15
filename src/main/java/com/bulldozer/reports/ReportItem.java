@@ -7,11 +7,8 @@ public class ReportItem {
 
     @Override
     public String toString() {
-        return "ReportItem{" +
-                "message='" + message + '\'' +
-                ", quantity=" + quantity +
-                ", cost=" + cost +
-                '}';
+        return message + ": " + "quantity=" + quantity +
+                ", cost=" + cost;
     }
 
     public ReportItem(String message, int quantity, int cost) {
